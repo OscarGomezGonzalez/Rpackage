@@ -13,8 +13,7 @@
 #'
 menuMain <- function() {
   fin=FALSE
-  While(fin)
-  {
+  while(!fin){
     print("**************************************************************")
     print("*               *** MENU PRINCIPAL ***                       *")
     print("*                  1) lectura de red                         *")
@@ -22,34 +21,59 @@ menuMain <- function() {
     print("*                  3) generar datos de prueba                *")
     print("*                  4) validacion de red genetica             *")
     print("*                  5) borrar red actual                      *")
-    print("*                  6) salir                                  *")
+    print("*                  6) borrar todo                            *")
+    print("*                  7) salir                                  *")
     print("*                                                            *")
     print("*                                                            *")
     print("*                                                            *")
     print("**************************************************************")
     select = readline(prompt = "Indica la opcion : ")
-    switch(select,
-           1={
-             validacionRedesGeneticas::lecturaRed.archivo()
-           },
-           2={
-             validacionRedesGeneticas::generarMatrizAdyacencia.matriz()
-           },
-           3={
-             validacionRedesGeneticas::generarArchivoPrueba.grafo()
-           },
-           4={
-             validacionRedesGeneticas::validarRedGenetica()
-           },
-           5={
-             validacionRedesGeneticas::borrarRedActual()
-           },
-           6={
-            fin=TRUE
-           },
-           {
-            print("Opcion por defecto, repite el menu, indique una opcion de las que tiene.")
-           }
-           )
+    if(select==1){
+      validacionRedesGeneticas::lecturaRed.archivo()
+    }else if(select==2){
+      validacionRedesGeneticas::generarMatrizAdyacencia.matriz()
+    }else if(select==3){
+      print("**************************************************************")
+      print("*                                                            *")
+      print("*                                                            *")
+      print('*        Introduzca  el vector para la red de prueba         *')
+      print("*                   (ext para parar)                         *")
+      print("*                                                            *")
+      print("**************************************************************")
+      i=1
+      while(i==-1){
+        a = readline(prompt = "Indica la red : ")
+        if(a=="ext"){
+          i=-1
+        }else{
+          vectorGenes[i] = a
+        }
+      }
+      validacionRedesGeneticas::generarArchivoPrueba.grafo(vectorGenes)
+    }else if(select==4){
+      validacionRedesGeneticas::validarRedGenetica()
+    }else if(select==5){
+      print("**************************************************************")
+      print("*                                                            *")
+      print("*                                                            *")
+      print('*            Introduzca  el nombre de la red.                *')
+      print("*                                                            *")
+      print("*                                                            *")
+      print("**************************************************************")
+      redGenes = readline(prompt = "Indica la red : ")
+      validacionRedesGeneticas::borrarRedActual(redGenes)
+    }else if(select==6){
+      validacionRedesGeneticas::borrarTodo()
+    }else if(select==7){
+      fin=TRUE
+    }else{
+      print("**************************************************************")
+      print("*                                                            *")
+      print("*                                                            *")
+      print('*  Opcion por defecto, indique una opcion de las que tiene.  *')
+      print("*                                                            *")
+      print("*                                                            *")
+      print("**************************************************************")
+    }
   }
 }

@@ -11,23 +11,13 @@
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-borrarRedActual = function(redGenes){
-  if(exists("redGenes")){
-  rm(redGenes)
+borrarTodo = function(){
+  rm(list=ls())
   print("**************************************************************")
   print("*                                                            *")
   print("*                                                            *")
-  print('*            Se ha borrado la red que pasaste.               *')
+  print('*             Se ha borrado todo el workspace.               *')
   print("*                                                            *")
   print("*                                                            *")
   print("**************************************************************")
-  }else{
-    print("**************************************************************")
-    print("*                                                            *")
-    print("*                                                            *")
-    print('*            Introduzca  el nombre de la red.                *')
-    print("*                                                            *")
-    print("*                                                            *")
-    print("**************************************************************")
-  }
 }

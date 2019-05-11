@@ -11,7 +11,23 @@
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-generarArchivoPrueba.grafo = function(vector){
+generarArchivoPrueba.grafo = function(){
+  print("**************************************************************")
+  print("*                                                            *")
+  print("*                                                            *")
+  print('*        Introduzca  el vector para la red de prueba         *')
+  print("*                   (ext para parar)                         *")
+  print("*                                                            *")
+  print("**************************************************************")
+  i=1
+  while(i==-1){
+    a = readline(prompt = "Indica la red : ")
+    if(a=="ext"){
+      i=-1
+    }else{
+      vectorGenes[i] = a
+    }
+  }
   respuesta=validacionRedesGeneticas::configuracionData.estado()
   if(as.numeric(respuesta)){
   config <- read.delim2("~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/config.txt")

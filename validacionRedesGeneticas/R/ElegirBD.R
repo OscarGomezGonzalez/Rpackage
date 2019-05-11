@@ -11,7 +11,7 @@
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
- lecturaRed.archivo = function(nombreArchivo){
- aux <- read.delim2("~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/prueba.txt")
- return(aux)
- }
+elegirBD.lista = function(nombreArchivo){
+  aux <- read.delim2("~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/prueba.txt")
+  return(aux)
+}

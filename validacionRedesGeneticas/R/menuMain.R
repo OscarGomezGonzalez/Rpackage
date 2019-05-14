@@ -29,36 +29,21 @@ menuMain <- function() {
     print("*                                                            *")
     print("**************************************************************")
     select = readline(prompt = "Indica la opcion : ")
-    if(select==1){
+    if(select==1){#archivos de prueba
       validacionRedesGeneticas::generarArchivoPrueba.grafo()
-    }else if(select==2){
+    }else if(select==2){#menu de leer
       #validacionRedesGeneticas::lecturaRed.archivo()
-    }else if(select==3){
-    }else if(select==4){
+    }else if(select==3){#elegir la BD con la que comparar
+      validacionRedesGeneticas::elegirBD.lista()
+    }else if(select==4){#validad red
       validacionRedesGeneticas::validarRedGenetica()
-    }else if(select==5){
-      print("**************************************************************")
-      print("*                                                            *")
-      print("*                                                            *")
-      print('*            Introduzca  el nombre de la red.                *')
-      print("*                                                            *")
-      print("*                                                            *")
-      print("**************************************************************")
-      redGenes = readline(prompt = "Indica la red : ")
-      validacionRedesGeneticas::borrarRedActual(redGenes)
-    }else if(select==6){
-      print("**************************************************************")
-      print("*                                                            *")
-      print("*                                                            *")
-      print('*            Introduzca  el nombre de la BD.                 *')
-      print("*                                                            *")
-      print("*                                                            *")
-      print("**************************************************************")
-      redGenes = readline(prompt = "Indica la BD : ")
-      validacionRedesGeneticas::borrarRedBD(redGenes)
-    }else if(select==7){
+    }else if(select==5){#borrar red
+      validacionRedesGeneticas::borrarRedActual()
+    }else if(select==6){#borrar BD
+      validacionRedesGeneticas::borrarRedBD()
+    }else if(select==7){#borrar todo el workspace
       validacionRedesGeneticas::borrarTodo()
-    }else if(select==8){
+    }else if(select==8){#salir
       fin=TRUE
       print("**************************************************************")
       print("*                                                            *")
@@ -67,7 +52,7 @@ menuMain <- function() {
       print("*                                                            *")
       print("*                                                            *")
       print("**************************************************************")
-    }else{
+    }else{#opcion defecto, fallo
       print("**************************************************************")
       print("*                                                            *")
       print("*                                                            *")

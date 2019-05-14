@@ -11,7 +11,15 @@
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-borrarRedActual = function(redGenes){
+borrarRedActual = function(){
+  print("**************************************************************")
+  print("*                                                            *")
+  print("*                                                            *")
+  print('*            Introduzca  el nombre de la red.                *')
+  print("*                                                            *")
+  print("*                                                            *")
+  print("**************************************************************")
+  redGenes = readline(prompt = "Indica la red : ")
   if(exists("redGenes")){
     rm(redGenes)
     print("**************************************************************")
@@ -47,7 +55,16 @@ borrarRedActual = function(redGenes){
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-borrarBD = function(BDGenes){
+borrarBD = function(){
+
+  print("**************************************************************")
+  print("*                                                            *")
+  print("*                                                            *")
+  print('*            Introduzca  el nombre de la BD.                 *')
+  print("*                                                            *")
+  print("*                                                            *")
+  print("**************************************************************")
+  BDGenes = readline(prompt = "Indica la BD : ")
   if(exists("BDGenes")){
     rm(BDGenes)
     print("**************************************************************")

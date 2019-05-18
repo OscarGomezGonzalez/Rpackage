@@ -1,0 +1,3 @@
+GenA GenB Peso
+a b 1
+b a 1

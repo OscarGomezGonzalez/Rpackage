@@ -18,7 +18,7 @@ elegirBD.lista = function(){
     print("**************************************************************")
     print("*              *** Lista Bases de Datos ***                  *")
     print("*                                                            *")
-    ficherosBD
+    print(ficherosBD)
     print("*                                                            *")
     print("*                                                            *")
     print("*     *** Eliga la Bases de Datos con el nombre completo *** *")
@@ -30,6 +30,7 @@ elegirBD.lista = function(){
     result=which(comprobar)
     if(result>0){
       BD = validacionRedesGeneticas::lecturaBD.BD(select)
+      fin=TRUE
     }else if(select=="ext"){
       fin=TRUE
     }else{
@@ -59,6 +60,6 @@ elegirBD.lista = function(){
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
 lecturaBD.BD = function(nombreBD){
-  BD <- read.delim2("~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/BD/",nombreBD[1])
+  BD <- read.delim2(paste0("~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/BD/",nombreBD), sep="")
   return(BD)
 }

@@ -1,0 +1,3 @@
+GenA GenB Peso
+gen1 gen2 14,56
+gen2 gen3 5,56

@@ -4,7 +4,7 @@
 \alias{borrarRedActual}
 \title{Dibuja el histograma de una variable superponiendo la densidad normal ajustada}
 \usage{
-borrarRedActual()
+borrarRedActual(redGenes)
 }
 \arguments{
 \item{x}{vector de datos cuyo histograma se va a calcular}

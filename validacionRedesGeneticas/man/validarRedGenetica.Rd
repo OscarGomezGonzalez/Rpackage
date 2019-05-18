@@ -4,7 +4,7 @@
 \alias{validarRedGenetica}
 \title{Dibuja el histograma de una variable superponiendo la densidad normal ajustada}
 \usage{
-validarRedGenetica()
+validarRedGenetica(redGenes, BD)
 }
 \arguments{
 \item{x}{vector de datos cuyo histograma se va a calcular}
@@ -23,5 +23,5 @@ u=rnorm(1000,100,12)
 normalHist(u);
 normalHist(u,dens=TRUE)
 normalHist(u,dens=TRUE,col="lightcyan")
-
+&& redGenes[i,2]==BD[i2,1]&& redGenes[i,2]==BD[i2,2]
 }

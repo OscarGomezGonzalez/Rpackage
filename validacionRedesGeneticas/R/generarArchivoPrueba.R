@@ -20,34 +20,45 @@ generarArchivoPrueba.grafo = function(){
   print("*                                                            *")
   print("**************************************************************")
   i=1
+  vector=c()
   while(i!=-1){
     a = readline(prompt = "Indica genA : ")
     if(a=="ext"){
       i=-1
     }else{
       vector[i] = a
+      a = readline(prompt = "Indica genB : ")
+      if(a=="ext"){
+        i=-1
+      }else{
+        vector[i+1] = a
+        a = readline(prompt = "Indica peso : ")
+        if(a=="ext"){
+          i=-1
+        }else{
+          vector[i+2] = a
+          i=i+3
+        }
+      }
     }
-    a = readline(prompt = "Indica genB : ")
-    if(a=="ext"){
-      i=-1
-    }else{
-      vector[i+1] = a
-    }
-    a = readline(prompt = "Indica peso : ")
-    if(a=="ext"){
-      i=-1
-    }else{
-      vector[i+2] = a
-    }
-    i=i+3
   }
-  config=validacionRedesGeneticas::configuracionRedesPruebas.estado()
-  if(as.numeric(config)){
-  ruta=paste0("~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/redes/prueba",config[1],".txt")
-  write(vector,ruta, ncolumns = 3)
+  size=length(vector)
+  if(size%%3==0 && size>0){
+    config=validacionRedesGeneticas::configuracionRedesPruebas.estado()
+    if(as.numeric(config)){
+      config[1]=config[1]+1
+      vectorFin=c("GenA","GenB","Peso",vector)
+      ruta=paste0("/Users/Racso/Documents/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/redes/prueba",config,".txt")
+      write(vectorFin,ruta, ncolumns = 3)
+      redGenes=validacionRedesGeneticas::lecturaRed.prueba(paste0("prueba",config,".txt"))
+      print(paste0("La nueva red se llama prueba",config,".txt"))
+      return(redGenes)
+    }else{
+      error=paste0("ERROR en el sistema de archivo, ",config)
+      print(error)
+    }
   }else{
-    error=paste0("ERROR en el sistema de archivo, ",config)
-    print(error)
+    print("Error al crear la red")
   }
 }
 

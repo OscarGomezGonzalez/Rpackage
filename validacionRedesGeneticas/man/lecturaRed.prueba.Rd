@@ -4,7 +4,7 @@
 \alias{lecturaRed.prueba}
 \title{Dibuja el histograma de una variable superponiendo la densidad normal ajustada}
 \usage{
-lecturaRed.prueba(nombreArchivo)
+lecturaRed.prueba(nombre)
 }
 \arguments{
 \item{x}{vector de datos cuyo histograma se va a calcular}

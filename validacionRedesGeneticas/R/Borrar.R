@@ -11,15 +11,7 @@
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-borrarRedActual = function(){
-  print("**************************************************************")
-  print("*                                                            *")
-  print("*                                                            *")
-  print('*            Introduzca  el nombre de la red.                *')
-  print("*                                                            *")
-  print("*                                                            *")
-  print("**************************************************************")
-  redGenes = readline(prompt = "Indica la red : ")
+borrarRedActual = function(redGenes){
   if(exists("redGenes")){
     rm(redGenes)
     print("**************************************************************")
@@ -40,8 +32,6 @@ borrarRedActual = function(){
   }
 }
 
-
-
 #' @title Dibuja el histograma de una variable superponiendo la densidad normal ajustada
 #' @description Función que dibuja el histograma de una variable x, superponiendo la densidad normal
 #' ajustada. Si el usuario lo desea puede superponer también un estimador de núcleo de la densidad.
@@ -55,16 +45,7 @@ borrarRedActual = function(){
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-borrarBD = function(){
-
-  print("**************************************************************")
-  print("*                                                            *")
-  print("*                                                            *")
-  print('*            Introduzca  el nombre de la BD.                 *')
-  print("*                                                            *")
-  print("*                                                            *")
-  print("**************************************************************")
-  BDGenes = readline(prompt = "Indica la BD : ")
+borrarBD = function(BD){
   if(exists("BDGenes")){
     rm(BDGenes)
     print("**************************************************************")
@@ -84,8 +65,6 @@ borrarBD = function(){
     print("**************************************************************")
   }
 }
-
-
 
 #' @title Dibuja el histograma de una variable superponiendo la densidad normal ajustada
 #' @description Función que dibuja el histograma de una variable x, superponiendo la densidad normal
@@ -110,5 +89,3 @@ borrarTodo = function(){
   print("*                                                            *")
   print("**************************************************************")
 }
-
-

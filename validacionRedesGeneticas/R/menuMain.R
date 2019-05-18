@@ -13,6 +13,8 @@
 #'
 menuMain <- function() {
   fin=FALSE
+  redGenes
+  BD
   while(!fin){
     print("**************************************************************")
     print("*               *** MENU PRINCIPAL ***                       *")
@@ -30,17 +32,78 @@ menuMain <- function() {
     print("**************************************************************")
     select = readline(prompt = "Indica la opcion : ")
     if(select==1){#archivos de prueba
-      validacionRedesGeneticas::generarArchivoPrueba.grafo()
+      redGenes=validacionRedesGeneticas::generarArchivoPrueba.grafo()
     }else if(select==2){#menu de leer
-      #validacionRedesGeneticas::lecturaRed.archivo()
+      lect=FALSE
+      while(!lect){
+        print("**************************************************************")
+        print("*               *** MENU lectura ***                         *")
+        print("*                1) lectura de prueba                        *")
+        print("*                2) lectura de archivo                       *")
+        print("*                3) lectura de carpeta                       *")
+        print("*                4) salir                                    *")
+        print("*                                                            *")
+        print("*                                                            *")
+        print("**************************************************************")
+        select = readline(prompt = "Indica la opcion : ")
+        if(select==1){#leer prueba
+          ficherosPrueba = dir(path = "~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/redes")
+          print("**************************************************************")
+          print("*                                                            *")
+          print("*                                                            *")
+          print('*          Introduzca el nombre del archivo completo         *')
+          print("*                   (ext para parar)                         *")
+          print("*                                                            *")
+          print(ficherosPrueba)
+          print("*                                                            *")
+          print("*                                                            *")
+          print("**************************************************************")
+          i=1
+          while(i!=-1){
+            a = readline(prompt = "Indica el archivo : ")
+            comprobar = ficherosPrueba %in% a #comprueba que existe lo leido por teclado con la lista de BD
+            result=which(comprobar)
+            if(result>0){
+              redGenes=validacionRedesGeneticas::lecturaRed.prueba(a)
+              i=-1
+              lect=TRUE
+            }else{
+              print("**************************************************************")
+              print("*                                                            *")
+              print("*                                                            *")
+              print('*  Opcion por defecto, indique una opcion de las que tiene.  *')
+              print("*                                                            *")
+              print("*                                                            *")
+              print("**************************************************************")
+            }
+          }
+          lect=TRUE
+        }else if(select==2){#leer archivo
+          redGenes=validacionRedesGeneticas::lecturaRed.archivo()
+          lect=TRUE
+        }else if(select==3){#leer carpeta
+          redGenes=validacionRedesGeneticas::lecturaRed.carpeta()
+          lect=TRUE
+        }else if(select==4){#salir
+          lect=TRUE
+        }else{#opcion defecto, fallo
+          print("**************************************************************")
+          print("*                                                            *")
+          print("*                                                            *")
+          print('*  Opcion por defecto, indique una opcion de las que tiene.  *')
+          print("*                                                            *")
+          print("*                                                            *")
+          print("**************************************************************")
+        }
+      }
     }else if(select==3){#elegir la BD con la que comparar
-      validacionRedesGeneticas::elegirBD.lista()
+      BD=validacionRedesGeneticas::elegirBD.lista()
     }else if(select==4){#validad red
-      validacionRedesGeneticas::validarRedGenetica()
+      validacionRedesGeneticas::validarRedGenetica(redGenes,BD)
     }else if(select==5){#borrar red
-      validacionRedesGeneticas::borrarRedActual()
+      validacionRedesGeneticas::borrarRedActual(redGenes)
     }else if(select==6){#borrar BD
-      validacionRedesGeneticas::borrarRedBD()
+      validacionRedesGeneticas::borrarBD(BD)
     }else if(select==7){#borrar todo el workspace
       validacionRedesGeneticas::borrarTodo()
     }else if(select==8){#salir

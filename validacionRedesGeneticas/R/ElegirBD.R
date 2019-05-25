@@ -11,8 +11,8 @@
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-elegirBD.lista = function(){
-  ficherosBD = dir(path = "~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/BD")
+elegirBD.lista = function(carpetaBD){
+  ficherosBD = dir(path = carpetaBD)
   fin=FALSE
   while(!fin){
     print("**************************************************************")
@@ -26,24 +26,25 @@ elegirBD.lista = function(){
     print("*                                                            *")
     print("**************************************************************")
     select = readline(prompt = "Indica la BD : ")
-    comprobar = ficherosBD %in% select #comprueba que existe lo leido por teclado con la lista de BD
-    result=which(comprobar)
-    if(result>0){
-      BD = validacionRedesGeneticas::lecturaBD.BD(select)
-      fin=TRUE
-    }else if(select=="ext"){
+    if(select=="ext"){
       fin=TRUE
     }else{
-      print("**************************************************************")
-      print("*                                                            *")
-      print("*                                                            *")
-      print('*  Opcion por defecto, indique una opcion de las que tiene.  *')
-      print("*                                                            *")
-      print("*                                                            *")
-      print("**************************************************************")
+      comprobar = any(ficherosBD %in% select) #comprueba que existe lo leido por teclado con la lista de BD
+      if(comprobar){
+        BD = validacionRedesGeneticas::lecturaBD.BD(select,carpetaBD)
+        fin=TRUE
+        return(BD)
+      }else{
+        print("**************************************************************")
+        print("*                                                            *")
+        print("*                                                            *")
+        print('*  Opcion por defecto, indique una opcion de las que tiene.  *')
+        print("*                                                            *")
+        print("*                                                            *")
+        print("**************************************************************")
+      }
     }
   }
-  return(BD)
 }
 
 #' @title Dibuja el histograma de una variable superponiendo la densidad normal ajustada
@@ -59,7 +60,7 @@ elegirBD.lista = function(){
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-lecturaBD.BD = function(nombreBD){
-  BD <- read.delim2(paste0("~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/BD/",nombreBD), sep="")
+lecturaBD.BD = function(nombreBD,carpetaBD){
+  BD <- read.delim2(paste0(carpetaBD,"/",nombreBD), sep="")
   return(BD)
 }

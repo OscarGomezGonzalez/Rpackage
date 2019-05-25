@@ -4,7 +4,7 @@
 \alias{elegirBD.lista}
 \title{Dibuja el histograma de una variable superponiendo la densidad normal ajustada}
 \usage{
-elegirBD.lista()
+elegirBD.lista(carpetaBD)
 }
 \arguments{
 \item{x}{vector de datos cuyo histograma se va a calcular}

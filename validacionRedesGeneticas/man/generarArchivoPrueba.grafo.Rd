@@ -4,7 +4,7 @@
 \alias{generarArchivoPrueba.grafo}
 \title{Dibuja el histograma de una variable superponiendo la densidad normal ajustada}
 \usage{
-generarArchivoPrueba.grafo()
+generarArchivoPrueba.grafo(carpetaRedesPrueba, carpetaBD)
 }
 \arguments{
 \item{x}{vector de datos cuyo histograma se va a calcular}

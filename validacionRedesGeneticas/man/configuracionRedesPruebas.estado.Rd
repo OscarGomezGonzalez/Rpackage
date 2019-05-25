@@ -4,7 +4,7 @@
 \alias{configuracionRedesPruebas.estado}
 \title{Dibuja el histograma de una variable superponiendo la densidad normal ajustada}
 \usage{
-configuracionRedesPruebas.estado()
+configuracionRedesPruebas.estado(carpetaRedesPrueba)
 }
 \arguments{
 \item{x}{vector de datos cuyo histograma se va a calcular}

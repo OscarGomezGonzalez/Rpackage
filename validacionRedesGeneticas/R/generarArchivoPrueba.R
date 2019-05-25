@@ -11,7 +11,7 @@
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-generarArchivoPrueba.grafo = function(){
+generarArchivoPrueba.grafo = function(carpetaRedesPrueba,carpetaBD){
   print("**************************************************************")
   print("*                                                            *")
   print("*                                                            *")
@@ -44,13 +44,13 @@ generarArchivoPrueba.grafo = function(){
   }
   size=length(vector)
   if(size%%3==0 && size>0){
-    config=validacionRedesGeneticas::configuracionRedesPruebas.estado()
+    config=validacionRedesGeneticas::configuracionRedesPruebas.estado(carpetaRedesPrueba)
     if(as.numeric(config)){
       config[1]=config[1]+1
       vectorFin=c("GenA","GenB","Peso",vector)
-      ruta=paste0("/Users/Racso/Documents/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/redes/prueba",config,".txt")
+      ruta=paste0(carpetaRedesPrueba,"/prueba",config,".txt")
       write(vectorFin,ruta, ncolumns = 3)
-      redGenes=validacionRedesGeneticas::lecturaRed.prueba(paste0("prueba",config,".txt"))
+      redGenes=validacionRedesGeneticas::lecturaRed.prueba(paste0("prueba",config,".txt"),carpetaRedesPrueba)
       print(paste0("La nueva red se llama prueba",config,".txt"))
       return(redGenes)
     }else{
@@ -75,7 +75,7 @@ generarArchivoPrueba.grafo = function(){
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-configuracionRedesPruebas.estado = function(){
-  ficheros = dir(path = "~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/redes")
+configuracionRedesPruebas.estado = function(carpetaRedesPrueba){
+  ficheros = dir(path = carpetaRedesPrueba)
   return(length(ficheros))
 }

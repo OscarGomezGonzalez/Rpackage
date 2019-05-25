@@ -4,7 +4,7 @@
 \alias{lecturaBD.BD}
 \title{Dibuja el histograma de una variable superponiendo la densidad normal ajustada}
 \usage{
-lecturaBD.BD(nombreBD)
+lecturaBD.BD(nombreBD, carpetaBD)
 }
 \arguments{
 \item{x}{vector de datos cuyo histograma se va a calcular}

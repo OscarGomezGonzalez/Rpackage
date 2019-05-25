@@ -11,8 +11,8 @@
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-lecturaRed.prueba = function(nombre){
-  aux <- read.delim2(paste0("~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/redes/",nombre), sep="")
+lecturaRed.prueba = function(nombre,carpetaRedesPrueba){
+  aux <- read.delim2(paste0(carpetaRedesPrueba,"/",nombre), sep="")
   return(aux)
 }
 
@@ -29,8 +29,8 @@ lecturaRed.prueba = function(nombre){
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-lecturaRed.archivo = function(nombreArchivo){
-  aux <- read.delim2(paste0("~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/redes/prueba.txt"), sep="")
+lecturaRed.archivo = function(nombreArchivo,carpetaLectura){
+  aux <- read.delim2(paste0(carpetaLectura,"/",nombreArchivo), sep="")
   return(aux)
 }
 
@@ -47,9 +47,10 @@ lecturaRed.archivo = function(nombreArchivo){
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-lecturaRed.carpeta = function(){
-  aux <- read.delim2(paste0("~/RStudio/trabajoBio/Package/validacionRedesGeneticas/data/redes/",nombreArchivo), sep="")
-  return(aux)
+lecturaRed.carpeta = function(carpetaLectura){
+  listaArchivos = list.files(path = carpetaLectura ,recursive = FALSE)
+  grafoFundido = validacionRedesGeneticas::cargarVariosGrafos.fundirGrafos(listaArchivos,carpetaLectura)
+  return(grafoFundido)
 }
 
 #' @title Dibuja el histograma de una variable superponiendo la densidad normal ajustada
@@ -65,14 +66,13 @@ lecturaRed.carpeta = function(){
 #' normalHist(u,dens=TRUE)
 #' normalHist(u,dens=TRUE,col="lightcyan")
 #'
-cargarVariosGrafos.fundirGrafos = function(listaArchivos){
+cargarVariosGrafos.fundirGrafos = function(listaArchivos,carpetaLectura){
+  grafoFundido=validacionRedesGeneticas::lecturaRed.archivo(listaArchivos[1],carpetaLectura)
   if(1<length(listaArchivos)){
     lista=listaArchivos[-1]
     for(i in lista){
-      grafoFundido=rbind(grafoFundido,i)
+      grafoFundido=rbind(grafoFundido,validacionRedesGeneticas::lecturaRed.archivo(i,carpetaLectura))
     }
-  }else{
-    grafoFundido=listaArchivos[1]
   }
   return(grafoFundido)
 }

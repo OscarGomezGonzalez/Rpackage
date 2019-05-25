@@ -4,7 +4,7 @@
 \alias{cargarVariosGrafos.fundirGrafos}
 \title{Dibuja el histograma de una variable superponiendo la densidad normal ajustada}
 \usage{
-cargarVariosGrafos.fundirGrafos(listaArchivos)
+cargarVariosGrafos.fundirGrafos(listaArchivos, carpetaLectura)
 }
 \arguments{
 \item{x}{vector de datos cuyo histograma se va a calcular}

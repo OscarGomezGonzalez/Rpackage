@@ -68,7 +68,7 @@ validarRedGenetica = function(redGenes,BD){
     print(paste0("El porcentaje total acumulado hasta la fila ",i," es de ",totalPorcentaje,"%"))
     print("**************************************************************")
     print("**************************************************************")
-    print(paste0("La media de hasta esta fila  es de ",fin,"%"))
+    print(paste0("La media hasta esta fila  es de ",fin,"%"))
     print("**************************************************************")
   }
   aux=nrow(redGenes)*2

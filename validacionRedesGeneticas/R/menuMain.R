@@ -37,7 +37,7 @@ menuMain <- function() {
     if(select==1){#archivos de prueba
       redGenes=validacionRedesGeneticas::generarArchivoPrueba.grafo(carpetaRedesPrueba,carpetaBD)
     }else if(select==2){#menu de leer
-      if(dir.exists(carpetaLectura)){
+      if(!dir.exists(carpetaLectura)){
         dir.create(carpetaLectura, showWarnings = TRUE, recursive = FALSE, mode = "0777")
         Sys.chmod(carpetaLectura, mode = "0777", use_umask = TRUE)
         Sys.umask(mode = NA)
